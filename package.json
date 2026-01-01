@@ -2,9 +2,23 @@
   "$schema": "https://www.raycast.com/schemas/extension.json",
   "name": "rewrite-anywhere",
   "title": "Rewrite Anywhere",
-  "description": "Rewrite selected text in different styles using OpenAI",
+  "description": "AI-powered text rewriter and translator. Instantly rewrite, translate, and transform text in any app. Quick AI writing assistant for business, casual, and professional communication styles.",
   "icon": "icon.png",
   "author": "anonymous",
+  "keywords": [
+    "AI text rewriter",
+    "AI translator",
+    "text translation",
+    "quick translate",
+    "AI writing assistant",
+    "grammar checker",
+    "text transformer",
+    "OpenAI",
+    "GPT",
+    "rewrite text",
+    "professional writing",
+    "business communication"
+  ],
   "categories": [
     "Productivity",
     "Communication"
