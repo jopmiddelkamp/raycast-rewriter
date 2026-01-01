@@ -2,22 +2,21 @@
   "$schema": "https://www.raycast.com/schemas/extension.json",
   "name": "rewrite-anywhere",
   "title": "Rewrite Anywhere",
-  "description": "AI-powered text rewriter and translator. Instantly rewrite, translate, and transform text in any app. Quick AI writing assistant for business, casual, and professional communication styles.",
+  "description": "AI-powered text rewriter. Transform selected text into business, casual, or professional styles using OpenAI GPT.",
   "icon": "icon.png",
-  "author": "anonymous",
+  "author": "jopmiddelkamp",
   "keywords": [
-    "AI text rewriter",
-    "AI translator",
-    "text translation",
-    "quick translate",
-    "AI writing assistant",
-    "grammar checker",
-    "text transformer",
+    "AI",
+    "rewrite",
+    "text",
+    "translate",
+    "writing",
+    "grammar",
     "OpenAI",
     "GPT",
-    "rewrite text",
-    "professional writing",
-    "business communication"
+    "professional",
+    "business",
+    "communication"
   ],
   "categories": [
     "Productivity",
@@ -28,7 +27,7 @@
     {
       "name": "rewrite",
       "title": "Rewrite Text",
-      "description": "Rewrite selected text or clipboard content in a chosen style",
+      "description": "Transform selected text or clipboard content into your preferred writing style",
       "mode": "view",
       "hotkey": {
         "modifiers": ["cmd"],
@@ -49,7 +48,7 @@
       "type": "textfield",
       "required": false,
       "title": "OpenAI Model",
-      "description": "Model to use for rewriting",
+      "description": "ChatGPT model for rewriting (gpt-4o, gpt-4-turbo, etc.)",
       "default": "gpt-4.1-nano",
       "placeholder": "gpt-4.1-nano"
     },
@@ -60,16 +59,16 @@
       "title": "Native Language",
       "description": "Your native language (e.g., Dutch, German, Spanish)",
       "default": "English",
-      "placeholder": "English"
+      "placeholder": "English, Spanish, Hindi, Chinese..."
     },
     {
       "name": "personaBackground",
       "type": "textfield",
       "required": false,
       "title": "Professional Background",
-      "description": "Your profession or role (e.g., Senior Software Engineer, Marketing Manager)",
-      "default": "Average Joe",
-      "placeholder": "Average Joe"
+      "description": "Your persona background",
+      "default": "Normal person",
+      "placeholder": "Software Engineer, Marketing Manager..."
     }
   ],
   "dependencies": {

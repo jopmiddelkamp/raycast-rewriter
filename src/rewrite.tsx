@@ -419,9 +419,7 @@ export default function Command() {
     );
   }
 
-  const detailMarkdown = inputText
-    ? inputText
-    : "No text loaded yet...";
+  const detailMarkdown = inputText ? inputText : "No text loaded yet...";
 
   return (
     <List
