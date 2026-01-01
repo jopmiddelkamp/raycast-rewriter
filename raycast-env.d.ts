@@ -13,9 +13,9 @@ type ExtensionPreferences = {
   /** OpenAI Model - Model to use for rewriting */
   "openaiModel": string,
   /** Native Language - Your native language (e.g., Dutch, German, Spanish) */
-  "personaNativeLanguage"?: string,
+  "personaNativeLanguage": string,
   /** Professional Background - Your profession or role (e.g., Senior Software Engineer, Marketing Manager) */
-  "personaBackground"?: string
+  "personaBackground": string
 }
 
 /** Preferences accessible in all the extension's commands */

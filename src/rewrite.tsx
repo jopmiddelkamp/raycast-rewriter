@@ -17,6 +17,10 @@ import {
 } from "@raycast/api";
 import OpenAI from "openai";
 import { useEffect, useRef, useState } from "react";
+import { exec } from "child_process";
+import { promisify } from "util";
+
+const execAsync = promisify(exec);
 
 // Module-level variable to track invocations across component renders
 // This persists even when the component doesn't remount
@@ -47,16 +51,23 @@ const DEFAULT_MODEL = "gpt-4.1-nano";
 
 function buildSystemPrompt(style: string, preferences: Preferences): string {
   const baseRules = `Rules:
-- Preserve the original meaning
-- Improve clarity, grammar, and structure
-- Do NOT add new facts
+- Fix spelling and grammar errors
+- Adjust tone to match the requested style
+- Keep ALL content - do NOT remove or omit any part of the text
+- Keep questions as questions, statements as statements
+- Do NOT add new facts or content
 - Do NOT change names, numbers, dates, currencies, or URLs
-- Keep similar length unless the style explicitly implies otherwise
-- Return ONLY the rewritten text with no preamble or explanation`;
+
+OUTPUT FORMAT:
+Output ONLY the corrected text. Nothing else.
+- Do NOT explain what you changed
+- Do NOT comment on the original text
+- Do NOT add introductions like "Here is..."
+- Just output the corrected version, nothing more`;
 
   const personaContext = buildPersonaContext(style, preferences);
 
-  return `You are a text rewriter. Rewrite the following text in a ${style.replace("-", " ")} tone.
+  return `You are a text corrector. Fix spelling/grammar and adjust tone to ${style.replace("-", " ")}. Keep ALL original content intact - never remove or summarize.
 
 ${personaContext}${baseRules}`;
 }
@@ -319,13 +330,7 @@ export default function Command() {
     fetchText();
   }); // No deps - runs on every render, but we gate it with checks
 
-  const {
-    text: inputText,
-    source: textSource,
-    lastStyle,
-    isLoading,
-    error,
-  } = state;
+  const { text: inputText, lastStyle, isLoading, error } = state;
 
   // Fail fast if API key is missing
   if (!preferences.openaiApiKey) {
@@ -365,9 +370,30 @@ export default function Command() {
       // Copy to clipboard
       await Clipboard.copy(rewrittenText);
 
-      // Close the window and show success HUD
+      // Close the window first
       await closeMainWindow({ clearRootSearch: true });
-      await showHUD("Copied. Paste with \u2318V to replace.");
+
+      // Try to automatically paste
+      // Small delay to ensure window closes and focus returns
+      await new Promise((resolve) => setTimeout(resolve, 150));
+
+      try {
+        // Try Clipboard.paste if available (Raycast API)
+        if (Clipboard.paste && typeof Clipboard.paste === "function") {
+          await Clipboard.paste(rewrittenText);
+          await showHUD("Text replaced!");
+        } else {
+          // Fallback: Use AppleScript to simulate Cmd+V
+          await execAsync(
+            'osascript -e \'tell application "System Events" to keystroke "v" using command down\'',
+          );
+          await showHUD("Text replaced!");
+        }
+      } catch (pasteError) {
+        // If automatic paste fails, fall back to manual paste message
+        console.log("Auto-paste failed:", pasteError);
+        await showHUD("Copied. Paste with \u2318V to replace.");
+      }
     } catch (err) {
       const message =
         err instanceof Error ? err.message : "Failed to rewrite text";
