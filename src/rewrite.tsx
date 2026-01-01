@@ -28,13 +28,13 @@ interface Preferences {
 }
 
 const STYLES = [
-  { id: "business-formal", name: "Business Formal" },
   { id: "business-informal", name: "Business Informal" },
-  { id: "friends-formal", name: "Friends Formal" },
+  { id: "business-formal", name: "Business Formal" },
   { id: "friends-informal", name: "Friends Informal" },
+  { id: "friends-formal", name: "Friends Formal" },
   { id: "friends-funny", name: "Friends Funny" },
-  { id: "general-formal", name: "General Formal" },
   { id: "general-informal", name: "General Informal" },
+  { id: "general-formal", name: "General Formal" },
   { id: "general-funny", name: "General Funny" },
 ] as const;
 
@@ -379,45 +379,26 @@ export default function Command() {
       ]
     : [...STYLES];
 
-  const sourceLabel = textSource === "selection" ? "Selected" : "Clipboard";
+  const detailMarkdown = inputText
+    ? inputText
+    : "No text loaded yet...";
 
   return (
     <List
       isLoading={isLoading}
+      isShowingDetail={!!inputText}
       navigationTitle="Rewrite Text"
       searchBarPlaceholder="Choose a style..."
     >
-      {inputText && (
-        <List.Section title={`Text to Rewrite (${sourceLabel})`}>
-          <List.Item
-            title={
-              inputText.length > 200
-                ? `${inputText.substring(0, 200)}...`
-                : inputText
-            }
-            icon={Icon.Text}
-            actions={
-              <ActionPanel>
-                <Action
-                  title="Refresh Selected Text"
-                  icon={Icon.ArrowClockwise}
-                  shortcut={{ modifiers: ["cmd"], key: "r" }}
-                  onAction={handleRefresh}
-                />
-              </ActionPanel>
-            }
-          />
-        </List.Section>
-      )}
       <List.Section title="Select Style">
         {sortedStyles.map((style) => (
           <List.Item
             key={style.id}
             title={style.name}
-            icon={style.id === lastStyle ? Icon.Star : Icon.Text}
             accessories={
               style.id === lastStyle ? [{ tag: { value: "Last used" } }] : []
             }
+            detail={<List.Item.Detail markdown={detailMarkdown} />}
             actions={
               <ActionPanel>
                 <Action
