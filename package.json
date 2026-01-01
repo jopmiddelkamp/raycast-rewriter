@@ -45,7 +45,8 @@
       "required": false,
       "title": "Native Language",
       "description": "Your native language (e.g., Dutch, German, Spanish)",
-      "placeholder": "Dutch"
+      "default": "English",
+      "placeholder": "English"
     },
     {
       "name": "personaBackground",
@@ -53,7 +54,8 @@
       "required": false,
       "title": "Professional Background",
       "description": "Your profession or role (e.g., Senior Software Engineer, Marketing Manager)",
-      "placeholder": "Senior Software Engineer"
+      "default": "Average Joe",
+      "placeholder": "Average Joe"
     }
   ],
   "dependencies": {
