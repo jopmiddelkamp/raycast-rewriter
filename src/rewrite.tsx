@@ -419,14 +419,6 @@ export default function Command() {
     );
   }
 
-  // Sort styles to put last used first
-  const sortedStyles = lastStyle
-    ? [
-        STYLES.find((s) => s.id === lastStyle)!,
-        ...STYLES.filter((s) => s.id !== lastStyle),
-      ]
-    : [...STYLES];
-
   const detailMarkdown = inputText
     ? inputText
     : "No text loaded yet...";
@@ -437,9 +429,10 @@ export default function Command() {
       isShowingDetail={!!inputText}
       navigationTitle="Rewrite Text"
       searchBarPlaceholder="Choose a style..."
+      selectedItemId={lastStyle ?? undefined}
     >
       <List.Section title="Select Style">
-        {sortedStyles.map((style) => (
+        {STYLES.map((style) => (
           <List.Item
             key={style.id}
             title={style.name}
