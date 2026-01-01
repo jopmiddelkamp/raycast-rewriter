@@ -49,8 +49,8 @@
       "required": false,
       "title": "OpenAI Model",
       "description": "ChatGPT model for rewriting (gpt-4o, gpt-4-turbo, etc.)",
-      "default": "gpt-4.1-nano",
-      "placeholder": "gpt-4.1-nano"
+      "default": "gpt-4o-mini",
+      "placeholder": "gpt-4o-mini"
     },
     {
       "name": "personaNativeLanguage",
@@ -79,10 +79,13 @@
   "devDependencies": {
     "@raycast/eslint-config": "^1.0.11",
     "@types/node": "22.10.2",
-    "@types/react": "18.3.18",
+    "@types/react": "18.2.45",
     "eslint": "^8.57.0",
     "prettier": "^3.4.2",
     "typescript": "^5.7.2"
+  },
+  "overrides": {
+    "@types/react": "18.2.45"
   },
   "scripts": {
     "build": "ray build --skip-types -e dist -o dist",

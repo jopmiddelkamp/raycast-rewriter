@@ -26,13 +26,6 @@ const execAsync = promisify(exec);
 // This persists even when the component doesn't remount
 let lastInvocationTime = 0;
 
-interface Preferences {
-  openaiApiKey: string;
-  openaiModel?: string;
-  personaNativeLanguage?: string;
-  personaBackground?: string;
-}
-
 const STYLES = [
   { id: "business-informal", name: "Business Informal" },
   { id: "business-formal", name: "Business Formal" },
@@ -47,7 +40,7 @@ const STYLES = [
 type StyleId = (typeof STYLES)[number]["id"];
 
 const LAST_STYLE_KEY = "lastUsedStyle";
-const DEFAULT_MODEL = "gpt-4.1-nano";
+const DEFAULT_MODEL = "gpt-4o-mini";
 
 function buildSystemPrompt(style: string, preferences: Preferences): string {
   const baseRules = `Rules:
@@ -406,14 +399,12 @@ export default function Command() {
   }
 
   if (error) {
-    const message =
-      error instanceof Error ? error.message : "Failed to get input text";
     return (
       <List>
         <List.EmptyView
           icon={Icon.ExclamationMark}
           title="Error"
-          description={message}
+          description={error}
         />
       </List>
     );

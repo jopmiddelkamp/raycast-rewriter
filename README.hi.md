@@ -6,7 +6,7 @@
 
 [![Raycast Extension](https://img.shields.io/badge/Raycast-Extension-FF6363?logo=raycast)](https://raycast.com)
 [![OpenAI Powered](https://img.shields.io/badge/Powered%20by-OpenAI-412991?logo=openai)](https://openai.com)
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 ---
 
@@ -76,7 +76,7 @@ npm run dev
 
 ### 2. AI मॉडल कॉन्फ़िगर करें (ऑप्शनल)
 
-डिफॉल्ट मॉडल: `gpt-4.1-nano`
+डिफॉल्ट मॉडल: `gpt-4o-mini`
 
 दूसरे मॉडल्स के लिए (जैसे, `gpt-4o`, `gpt-4-turbo`):
 1. Raycast Preferences खोलें
@@ -140,7 +140,7 @@ npm run dev
 
 ## 📄 लाइसेंस
 
-Apache License 2.0 — डिटेल्स के लिए [LICENSE](LICENSE) देखें।
+MIT License — डिटेल्स के लिए [LICENSE](LICENSE) देखें।
 
 ---
 

@@ -6,7 +6,7 @@
 
 [![Raycast Extension](https://img.shields.io/badge/Raycast-Extension-FF6363?logo=raycast)](https://raycast.com)
 [![OpenAI Powered](https://img.shields.io/badge/Powered%20by-OpenAI-412991?logo=openai)](https://openai.com)
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 ---
 
@@ -76,7 +76,7 @@ npm run dev
 
 ### 2. 配置 AI 模型（可选）
 
-默认模型：`gpt-4.1-nano`
+默认模型：`gpt-4o-mini`
 
 使用其他模型（例如 `gpt-4o`、`gpt-4-turbo`）：
 1. 打开 Raycast 偏好设置
@@ -140,7 +140,7 @@ npm run dev
 
 ## 📄 许可证
 
-Apache License 2.0 — 详情请参阅 [LICENSE](LICENSE)。
+MIT License — 详情请参阅 [LICENSE](LICENSE)。
 
 ---
 

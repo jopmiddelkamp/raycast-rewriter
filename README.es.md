@@ -6,7 +6,7 @@
 
 [![Extensión Raycast](https://img.shields.io/badge/Raycast-Extension-FF6363?logo=raycast)](https://raycast.com)
 [![Powered by OpenAI](https://img.shields.io/badge/Powered%20by-OpenAI-412991?logo=openai)](https://openai.com)
-[![Licencia](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
+[![Licencia](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 ---
 
@@ -76,7 +76,7 @@ npm run dev
 
 ### 2. Configurar Modelo de IA (Opcional)
 
-Modelo por defecto: `gpt-4.1-nano`
+Modelo por defecto: `gpt-4o-mini`
 
 Para otros modelos (ej., `gpt-4o`, `gpt-4-turbo`):
 1. Abre las Preferencias de Raycast
@@ -140,7 +140,7 @@ Para cambiar el atajo por defecto `Cmd + Y`:
 
 ## 📄 Licencia
 
-Apache License 2.0 — Ver [LICENSE](LICENSE) para detalles.
+MIT License — Ver [LICENSE](LICENSE) para detalles.
 
 ---
 
