@@ -327,36 +327,6 @@ export default function Command() {
     error,
   } = state;
 
-  // Refresh function to re-fetch selected text
-  async function handleRefresh() {
-    setState((prev) => ({ ...prev, isLoading: true, lastFetchTime: 0 }));
-
-    try {
-      const result = await initializeCommand();
-      setState({
-        text: result.text,
-        source: result.source,
-        lastStyle: result.lastStyle,
-        isLoading: false,
-        error: null,
-        lastFetchTime: Date.now(),
-      });
-      await showToast({
-        style: Toast.Style.Success,
-        title: "Refreshed",
-        message: "Fetched latest selected text",
-      });
-    } catch (err) {
-      const message = err instanceof Error ? err.message : "Failed to get text";
-      setState((prev) => ({
-        ...prev,
-        isLoading: false,
-        error: message,
-        lastFetchTime: Date.now(),
-      }));
-    }
-  }
-
   // Fail fast if API key is missing
   if (!preferences.openaiApiKey) {
     return (
@@ -457,12 +427,6 @@ export default function Command() {
                   title="Rewrite"
                   icon={Icon.Pencil}
                   onAction={() => handleSelect(style.id)}
-                />
-                <Action
-                  title="Refresh Selected Text"
-                  icon={Icon.ArrowClockwise}
-                  shortcut={{ modifiers: ["cmd"], key: "r" }}
-                  onAction={handleRefresh}
                 />
               </ActionPanel>
             }
