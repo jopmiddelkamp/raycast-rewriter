@@ -38,6 +38,22 @@
       "description": "Model to use for rewriting",
       "default": "gpt-4.1-nano",
       "placeholder": "gpt-4.1-nano"
+    },
+    {
+      "name": "personaNativeLanguage",
+      "type": "textfield",
+      "required": false,
+      "title": "Native Language",
+      "description": "Your native language (e.g., Dutch, German, Spanish)",
+      "placeholder": "Dutch"
+    },
+    {
+      "name": "personaBackground",
+      "type": "textfield",
+      "required": false,
+      "title": "Professional Background",
+      "description": "Your profession or role (e.g., Senior Software Engineer, Marketing Manager)",
+      "placeholder": "Senior Software Engineer"
     }
   ],
   "dependencies": {

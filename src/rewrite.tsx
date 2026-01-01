@@ -25,6 +25,8 @@ let lastInvocationTime = 0;
 interface Preferences {
   openaiApiKey: string;
   openaiModel?: string;
+  personaNativeLanguage?: string;
+  personaBackground?: string;
 }
 
 const STYLES = [
@@ -43,16 +45,66 @@ type StyleId = (typeof STYLES)[number]["id"];
 const LAST_STYLE_KEY = "lastUsedStyle";
 const DEFAULT_MODEL = "gpt-4.1-nano";
 
-function buildSystemPrompt(style: string): string {
-  return `You are a text rewriter. Rewrite the following text in a ${style.replace("-", " ")} tone.
-
-Rules:
+function buildSystemPrompt(style: string, preferences: Preferences): string {
+  const baseRules = `Rules:
 - Preserve the original meaning
 - Improve clarity, grammar, and structure
 - Do NOT add new facts
 - Do NOT change names, numbers, dates, currencies, or URLs
 - Keep similar length unless the style explicitly implies otherwise
 - Return ONLY the rewritten text with no preamble or explanation`;
+
+  const personaContext = buildPersonaContext(style, preferences);
+
+  return `You are a text rewriter. Rewrite the following text in a ${style.replace("-", " ")} tone.
+
+${personaContext}${baseRules}`;
+}
+
+function buildPersonaContext(style: string, preferences: Preferences): string {
+  const { personaNativeLanguage, personaBackground } = preferences;
+
+  const isBusinessStyle = style.startsWith("business-");
+
+  // For business style without any persona config, still add intelligence boost
+  if (!personaNativeLanguage && !personaBackground && !isBusinessStyle) {
+    return "";
+  }
+
+  const parts: string[] = [];
+
+  if (personaNativeLanguage || personaBackground) {
+    const backgroundDesc = personaBackground
+      ? `a ${personaBackground}`
+      : "someone";
+    const nativeDesc = personaNativeLanguage
+      ? ` who is a native ${personaNativeLanguage} speaker`
+      : "";
+    parts.push(`You are writing as ${backgroundDesc}${nativeDesc}.`);
+  }
+
+  if (personaNativeLanguage) {
+    parts.push(`
+Language adaptation:
+- If the text is NOT in ${personaNativeLanguage}, use simpler vocabulary and sentence structures. Avoid advanced idioms, complex phrasal verbs, or overly sophisticated language. The goal is to sound natural for a non-native speaker.
+- If the text IS in ${personaNativeLanguage}, write naturally with full vocabulary range since this is the native language.`);
+  }
+
+  if (isBusinessStyle) {
+    parts.push(`
+Professional tone:
+- Write with confidence and clarity to convey competence and expertise.
+- Use precise, well-structured sentences that demonstrate thoughtfulness.
+- Where appropriate, use domain-specific terminology that shows professional knowledge.
+- Maintain a polished, articulate tone without being verbose or overly complex.`);
+  }
+
+  const contextBlock = parts.join("\n");
+
+  return `Persona context:
+${contextBlock}
+
+`;
 }
 
 async function showAccessibilityAlert(): Promise<void> {
@@ -143,7 +195,7 @@ async function rewriteText(
   const completion = await openai.chat.completions.create({
     model,
     messages: [
-      { role: "system", content: buildSystemPrompt(style) },
+      { role: "system", content: buildSystemPrompt(style, preferences) },
       { role: "user", content: text },
     ],
     temperature: 0.35,
