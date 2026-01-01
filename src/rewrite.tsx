@@ -17,10 +17,6 @@ import {
 } from "@raycast/api";
 import OpenAI from "openai";
 import { useEffect, useRef, useState } from "react";
-import { exec } from "child_process";
-import { promisify } from "util";
-
-const execAsync = promisify(exec);
 
 // Module-level variable to track invocations across component renders
 // This persists even when the component doesn't remount
@@ -371,21 +367,12 @@ export default function Command() {
       await new Promise((resolve) => setTimeout(resolve, 150));
 
       try {
-        // Try Clipboard.paste if available (Raycast API)
-        if (Clipboard.paste && typeof Clipboard.paste === "function") {
-          await Clipboard.paste(rewrittenText);
-          await showHUD("Text replaced!");
-        } else {
-          // Fallback: Use AppleScript to simulate Cmd+V
-          await execAsync(
-            'osascript -e \'tell application "System Events" to keystroke "v" using command down\'',
-          );
-          await showHUD("Text replaced!");
-        }
+        await Clipboard.paste(rewrittenText);
+        await showHUD("Text replaced!");
       } catch (pasteError) {
         // If automatic paste fails, fall back to manual paste message
         console.log("Auto-paste failed:", pasteError);
-        await showHUD("Copied. Paste with \u2318V to replace.");
+        await showHUD("Copied. Paste with ⌘V to replace.");
       }
     } catch (err) {
       const message =
