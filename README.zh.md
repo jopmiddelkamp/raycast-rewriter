@@ -54,7 +54,7 @@
 
 ```bash
 # 克隆仓库
-git clone https://github.com/YOUR_USERNAME/raycast-rewriter.git
+git clone https://github.com/jopmiddelkamp/raycast-rewriter.git
 cd raycast-rewriter
 
 # 安装依赖

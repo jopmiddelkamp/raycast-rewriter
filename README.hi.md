@@ -54,7 +54,7 @@
 
 ```bash
 # रिपॉज़िटरी क्लोन करें
-git clone https://github.com/YOUR_USERNAME/raycast-rewriter.git
+git clone https://github.com/jopmiddelkamp/raycast-rewriter.git
 cd raycast-rewriter
 
 # डिपेंडेंसीज़ इंस्टॉल करें

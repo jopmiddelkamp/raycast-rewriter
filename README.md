@@ -54,7 +54,7 @@
 
 ```bash
 # Clone the repository
-git clone https://github.com/YOUR_USERNAME/raycast-rewriter.git
+git clone https://github.com/jopmiddelkamp/raycast-rewriter.git
 cd raycast-rewriter
 
 # Install dependencies

@@ -27,6 +27,7 @@
     {
       "name": "rewrite",
       "title": "Rewrite Text",
+      "subtitle": "OpenAI",
       "description": "Transform selected text or clipboard content into your preferred writing style",
       "mode": "view",
       "hotkey": {
@@ -73,7 +74,6 @@
   ],
   "dependencies": {
     "@raycast/api": "^1.103.3",
-    "@raycast/utils": "^2.2.2",
     "openai": "^6.15.0"
   },
   "devDependencies": {

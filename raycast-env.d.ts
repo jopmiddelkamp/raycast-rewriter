@@ -10,11 +10,11 @@
 type ExtensionPreferences = {
   /** OpenAI API Key - Your OpenAI API key */
   "openaiApiKey": string,
-  /** OpenAI Model - Model to use for rewriting */
+  /** OpenAI Model - ChatGPT model for rewriting (gpt-4o, gpt-4-turbo, etc.) */
   "openaiModel": string,
   /** Native Language - Your native language (e.g., Dutch, German, Spanish) */
   "personaNativeLanguage": string,
-  /** Professional Background - Your profession or role (e.g., Senior Software Engineer, Marketing Manager) */
+  /** Professional Background - Your persona background */
   "personaBackground": string
 }
 
