@@ -79,4 +79,4 @@ To read selected text directly (instead of only using clipboard):
 
 ## License
 
-MIT
+Apache License 2.0
