@@ -2,7 +2,7 @@
   "$schema": "https://www.raycast.com/schemas/extension.json",
   "name": "rewrite-anywhere",
   "title": "Rewrite Anywhere",
-  "description": "AI-powered text rewriter. Transform selected text into business, casual, or professional styles using OpenAI GPT.",
+  "description": "ChatGPT AI-powered text rewriter. Transform selected text into business, casual, or professional styles using OpenAI GPT.",
   "icon": "icon.png",
   "author": "jopmiddelkamp",
   "keywords": [
