@@ -36,7 +36,7 @@
 | **8 Writing Styles** | Business Formal/Informal, Friends Formal/Informal/Funny, General Formal/Informal/Funny |
 | **Smart Language Detection** | Adapts vocabulary based on your native language |
 | **Professional Persona** | Adjusts terminology based on your profession |
-| **One-Key Operation** | Default hotkey: `Cmd + Y` |
+| **One-Key Operation** | Default hotkey: `Opt + Y` |
 | **Works Everywhere** | Any app that supports text selection |
 | **Auto-Paste** | Automatically replaces selected text |
 | **Remembers Preferences** | Last-used style appears first |
@@ -95,7 +95,7 @@ For more natural, personalized rewrites:
 ## 📖 How to Use
 
 1. **Select text** in any application (or copy to clipboard)
-2. **Press `Cmd + Y`** (or search "Rewrite Text" in Raycast)
+2. **Press `Opt + Y`** (or search "Rewrite Text" in Raycast)
 3. **Choose your writing style**
 4. **Press Enter** — text is rewritten and auto-pasted!
 
@@ -121,7 +121,7 @@ Without this permission, the extension uses clipboard content.
 
 ## ⌨️ Custom Hotkey
 
-To change the default `Cmd + Y` hotkey:
+To change the default `Opt + Y` hotkey:
 
 1. Open Raycast Preferences
 2. Navigate to **Extensions > Rewrite Anywhere > Rewrite Text**

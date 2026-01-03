@@ -36,7 +36,7 @@
 | **8 Estilos de Escritura** | Negocios Formal/Informal, Amigos Formal/Informal/Gracioso, General Formal/Informal/Gracioso |
 | **Detección Inteligente de Idioma** | Adapta el vocabulario según tu idioma nativo |
 | **Persona Profesional** | Ajusta la terminología según tu profesión |
-| **Operación con Una Tecla** | Atajo por defecto: `Cmd + Y` |
+| **Operación con Una Tecla** | Atajo por defecto: `Opt + Y` |
 | **Funciona en Todas Partes** | Cualquier app que soporte selección de texto |
 | **Auto-Pegado** | Reemplaza automáticamente el texto seleccionado |
 | **Recuerda Preferencias** | El último estilo usado aparece primero |
@@ -95,7 +95,7 @@ Para reescrituras más naturales y personalizadas:
 ## 📖 Cómo Usar
 
 1. **Selecciona texto** en cualquier aplicación (o copia al portapapeles)
-2. **Presiona `Cmd + Y`** (o busca "Rewrite Text" en Raycast)
+2. **Presiona `Opt + Y`** (o busca "Rewrite Text" en Raycast)
 3. **Elige tu estilo de escritura**
 4. **Presiona Enter** — ¡el texto se reescribe y se pega automáticamente!
 
@@ -121,7 +121,7 @@ Sin este permiso, la extensión usa el contenido del portapapeles.
 
 ## ⌨️ Atajo Personalizado
 
-Para cambiar el atajo por defecto `Cmd + Y`:
+Para cambiar el atajo por defecto `Opt + Y`:
 
 1. Abre las Preferencias de Raycast
 2. Navega a **Extensions > Rewrite Anywhere > Rewrite Text**
